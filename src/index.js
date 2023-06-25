@@ -1,5 +1,5 @@
 import _ from 'lodash';
 import './styles.css';
-import test from './test';
+import addContainer from './addContainer';
 
-test();
+addContainer();
