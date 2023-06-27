@@ -12,8 +12,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'template',
-    }),
+      title: 'Todo List',
+    }), 
   ],
   devtool: 'inline-source-map',
   mode: 'development', 

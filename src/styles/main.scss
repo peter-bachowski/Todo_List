@@ -1,17 +1,54 @@
-$primary-color: red;
+$header-height: 50px;
+$sidePanel-height: auto;
+$contentArea-height: auto;
+$footer-height: 100px;
+
+$header-color: rgb(196, 49, 49);
+$sidePanel-color: rgb(246, 246, 246);
+$footer-color: rgb(36, 34, 31);
 
 body, html {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
   }
   
   * {
     box-sizing: border-box;
+    border: 1px solid black; // for debugging purposes
   }
   
   .container {
     width: 100%;
     height: 100%;
-    color: $primary-color;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header {
+    background: $header-color;
+    height: $header-height;
+  }
+
+  .mainBody {
+    display: flex;
+    flex: 1;
+    min-height: 100px;
   }
   
+  .sidePanel {
+    background: $sidePanel-color;
+    min-height: $sidePanel-height;
+    width: 30%;
+  }
+
+  .contentArea {
+    min-height: $contentArea-height;
+    width: 100%;
+  }
+
+  .footer {
+    background: $footer-color;
+    height: $footer-height;
+  }
