@@ -29,6 +29,17 @@ body, html {
   .header {
     background: $header-color;
     height: $header-height;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .newProjectBtn {
+    width: 30px;
+    height: 30px;
+    border-radius: 0px;
+    border: none;
   }
 
   .mainBody {
