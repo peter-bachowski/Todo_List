@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "repository": {
-    "url": "git+https://github.com/peter-bachowski/Todo_List.git",
+    "url": "git+https://github.com/peter-bachowski/Todo_List.git"},
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "webpack-dev-server --mode development",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
