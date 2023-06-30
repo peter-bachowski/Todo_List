@@ -2,6 +2,8 @@
   "name": "todo_list",
   "version": "1.0.0",
   "description": "",
+  "repository": {
+    "url": "git+https://github.com/peter-bachowski/Todo_List.git",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
