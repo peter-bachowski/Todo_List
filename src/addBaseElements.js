@@ -19,9 +19,6 @@ function addBaseElements () {
     mainBody.appendChild(sidePanel)
     mainBody.appendChild(contentArea);
     container.appendChild(footer);
-
-
-
 }
 
 export default addBaseElements;

@@ -1,11 +1,11 @@
+$main-font: Roboto;
+
 $header-height: 50px;
-$sidePanel-height: auto;
-$contentArea-height: auto;
 $footer-height: 100px;
 
-$header-color: rgb(196, 49, 49);
-$sidePanel-color: rgb(246, 246, 246);
-$footer-color: rgb(36, 34, 31);
+$primary-color: rgb(196, 49, 49);
+$secondary-color: rgb(246, 246, 246);
+$tertiary-color: rgb(36, 34, 31);
 
 body, html {
     margin: 0;
@@ -16,7 +16,7 @@ body, html {
   
   * {
     box-sizing: border-box;
-    //border: 1px solid black; // for debugging purposes
+    font-family: 'Roboto', sans-serif;
   }
   
   .container {
@@ -27,15 +27,24 @@ body, html {
   }
 
   .header {
-    background: $header-color;
+    color: $secondary-color;
+    background: $primary-color;
     height: $header-height;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+  }
+
+  .title {
+    position: absolute;
+    left: 0%;
+    margin-left: 10px;
   }
 
   .newProjectBtn {
+    background-color: $secondary-color;
     width: 30px;
     height: 30px;
     border-radius: 0px;
@@ -49,17 +58,29 @@ body, html {
   }
   
   .sidePanel {
-    background: $sidePanel-color;
-    min-height: $sidePanel-height;
+    background: $secondary-color;
     width: 30%;
   }
 
+  .sidePanelTitle {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+  }
+
   .contentArea {
-    min-height: $contentArea-height;
     width: 100%;
   }
 
   .footer {
-    background: $footer-color;
+    color: $secondary-color;
+    background: $tertiary-color;
     height: $footer-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .copyRightText {
+    padding: 20px;
   }

@@ -1,7 +1,11 @@
 function fillFooter () {
-    const footerContentContainer = document.createElement('div');
-    footerContent.classList.add('footerContentContainer');
-    footerContentContainer.innerText = ""
+    const footer = document.querySelector('.footer');
+    const copyRightText = document.createElement('div');
+
+    copyRightText.classList.add('copyRightText');
+    copyRightText.innerText = "Copyright © Peter Bachowski";
+
+    footer.appendChild(copyRightText);
 }
 
-export default fillFooter;
+export default fillFooter; 
