@@ -1,4 +1,4 @@
-function fillHeader () {
+function fillHeader () { //fills header with the title and the add button
     
     const header = document.querySelector('.header');
     const newProjectBtn = document.createElement('button');

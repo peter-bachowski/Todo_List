@@ -41,6 +41,8 @@ body, html {
     position: absolute;
     left: 0%;
     margin-left: 10px;
+    font-size: 20px;
+    font-weight: 700;
   }
 
   .newProjectBtn {
@@ -60,16 +62,28 @@ body, html {
   .sidePanel {
     background: $secondary-color;
     width: 30%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   .sidePanelTitle {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     padding: 5px;
+  }
+
+  .projectTitle {
+    padding: 5px;
+  }
+
+  .projectTitle:hover {
+    background-color: gray;
   }
 
   .contentArea {
     width: 100%;
+    padding: 50px;
+    display: inline-grid;
   }
 
   .footer {
@@ -83,4 +97,10 @@ body, html {
 
   .copyRightText {
     padding: 20px;
+  }
+
+  hr {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    width: 100%;
   }

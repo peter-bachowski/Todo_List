@@ -1,11 +1,13 @@
 import _ from 'lodash';
 import '../src/styles/main.scss'
-import addBaseElements from './addBaseElements';
-import fillHeader from './fillHeader';
-import fillFooter from './fillFooter';
-import fillSidePanel from './fillSidePanel';
+import addBaseElements from './modules/addBaseElements';
+import fillHeader from './modules/fillHeader';
+import fillFooter from './modules/fillFooter';
+import fillSidePanel from './modules/fillSidePanel';
+import projectCounter from './modules/projectCounter';
 
 addBaseElements();
 fillHeader();
 fillFooter();
 fillSidePanel();
+projectCounter();
