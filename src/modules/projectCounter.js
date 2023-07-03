@@ -22,11 +22,24 @@ function projectCounter () {
     let todoList = [];
     let todo1 = new Todo('default', 'This is the default project template.', 'July 23', 'High');
     let templateProject = new Project('Template', todoList, todoList.length, true);
+    let projectCount = projectArray.length;
+
+    const sidePanel = document.querySelector('.sidePanel');
+    const newProjectBtn = document.querySelector('.newProjectBtn');
 
     todoList.push(todo1);
     projectArray.push(templateProject);
 
+    newProjectBtn.addEventListener('click', () => {
+        let newProject = new Project('','','','');
+        projectArray.push(newProject);
 
+        const newProjectDiv = document.createElement('div');     
+        newProjectDiv.classList.add('projectTitle');
+        newProjectDiv.innerText = 'project 1';
+
+        sidePanel.appendChild(newProjectDiv);
+    });
 }
 
 export default projectCounter;
