@@ -6,6 +6,7 @@ function fillSidePanel () { //populates the side panel withe the title and a def
 
     sidePanelTitle.classList.add('sidePanelTitle');
     defaultProject.classList.add('projectTitle');
+    defaultProject.id = 'selected';
 
     sidePanelTitle.innerText = 'Projects';
     defaultProject.innerText = 'default project title';
@@ -13,6 +14,11 @@ function fillSidePanel () { //populates the side panel withe the title and a def
     sidePanel.appendChild(sidePanelTitle);
     sidePanel.appendChild(hr);
     sidePanel.appendChild(defaultProject);
+
+    defaultProject.addEventListener('click', () => {
+        document.querySelector('#selected').id = null;
+        defaultProject.id = 'selected';
+    });
 }
 
 export default fillSidePanel; 

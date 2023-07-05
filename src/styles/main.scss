@@ -50,7 +50,6 @@ body, html {
     width: 30px;
     height: 30px;
     border-radius: 0px;
-    //border: none;
   }
 
   .mainBody {
@@ -78,6 +77,10 @@ body, html {
 
   .projectTitle:hover {
     background-color: gray;
+  }
+
+  #selected {
+    background-color: green;
   }
 
   .contentArea {
