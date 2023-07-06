@@ -31,10 +31,9 @@ function projectCounter () {
     todoList.push(todo1);
     projectArray.push(templateProject);
 
+    projectForm();
 
     newProjectBtn.addEventListener('click', () => {
-        projectForm();
-
         let newProject = new Project('','','','');
         projectArray.push(newProject);
 
