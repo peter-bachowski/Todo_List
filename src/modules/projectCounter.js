@@ -1,3 +1,5 @@
+import projectForm from "./projectForm";
+
 function projectCounter () {
     
     class Project {
@@ -29,7 +31,10 @@ function projectCounter () {
     todoList.push(todo1);
     projectArray.push(templateProject);
 
+
     newProjectBtn.addEventListener('click', () => {
+        projectForm();
+
         let newProject = new Project('','','','');
         projectArray.push(newProject);
 
@@ -39,7 +44,7 @@ function projectCounter () {
             newProjectDiv.id = 'selected';
         });   
         newProjectDiv.classList.add('projectTitle');
-        newProjectDiv.innerText = 'project 1';
+        newProjectDiv.innerText = 'project' + (projectArray.length-1);
 
         sidePanel.appendChild(newProjectDiv);
     });
