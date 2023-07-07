@@ -31,21 +31,12 @@ function projectCounter () {
     todoList.push(todo1);
     projectArray.push(templateProject);
 
-    projectForm();
 
     newProjectBtn.addEventListener('click', () => {
-        let newProject = new Project('','','','');
-        projectArray.push(newProject);
+        projectForm();
 
-        const newProjectDiv = document.createElement('div');  
-        newProjectDiv.addEventListener('click', () => {
-            document.querySelector('#selected').id = null;
-            newProjectDiv.id = 'selected';
-        });   
-        newProjectDiv.classList.add('projectTitle');
-        newProjectDiv.innerText = 'project' + (projectArray.length-1);
+   
 
-        sidePanel.appendChild(newProjectDiv);
     });
 }
 
