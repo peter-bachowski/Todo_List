@@ -1,4 +1,4 @@
-function projectForm () {
+function projectForm (projectCounter) {
     // the lightbox
     const lightbox = document.createElement('lightbox');
     const container = document.querySelector('.container');
@@ -38,16 +38,17 @@ function projectForm () {
     });
 
     submitBtn.addEventListener('click', () => {
-        const newProjectDiv = document.createElement('div');  
-        newProjectDiv.addEventListener('click', () => {
-            document.querySelector('#selected').id = null;
-            newProjectDiv.id = 'selected';
-        });
-        newProjectDiv.classList.add('projectTitle');
-        newProjectDiv.innerText = titleInput.value;
-        document.querySelector('.sidePanel').appendChild(newProjectDiv);
-        if (titleInput.value !== null) {
+        if (titleInput.value !== '') {
+            const newProjectDiv = document.createElement('div');  
+            newProjectDiv.addEventListener('click', () => {
+                document.querySelector('#selected').id = null;
+                newProjectDiv.id = 'selected';
+            });
+            newProjectDiv.classList.add('projectTitle');
+            newProjectDiv.innerText = titleInput.value;
+            document.querySelector('.sidePanel').appendChild(newProjectDiv);
             container.removeChild(lightbox);
+            console.log(projectCounter);
         }
     });
 }

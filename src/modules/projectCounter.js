@@ -20,12 +20,13 @@ function projectCounter () {
         }
     }
 
+    let projectCounter = 1;
+
     let projectArray = [];
     let todoList = [];
     let todo1 = new Todo('default', 'This is the default project template.', 'July 23', 'High');
     let templateProject = new Project('Template', todoList, todoList.length, true);
 
-    const sidePanel = document.querySelector('.sidePanel');
     const newProjectBtn = document.querySelector('.newProjectBtn');
 
     todoList.push(todo1);
@@ -33,10 +34,8 @@ function projectCounter () {
 
 
     newProjectBtn.addEventListener('click', () => {
-        projectForm();
-
-   
-
+        projectCounter += 1;
+        projectForm(projectCounter);
     });
 }
 
