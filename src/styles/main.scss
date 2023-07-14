@@ -39,11 +39,20 @@ body, html {
   }
 
   .title {
-    position: absolute;
-    left: 0%;
-    margin-left: 10px;
     font-size: 20px;
     font-weight: 700;
+  }
+
+  .mainBody#large{
+    display: flex;
+    flex: 1;
+    min-height: 100px;
+  }
+
+  .mainBody#small{
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
   }
 
   .newProjectBtn {
@@ -52,24 +61,38 @@ body, html {
     height: 30px;
     border-radius: 0px;
   }
-
-  .mainBody {
-    display: flex;
-    flex: 1;
-    min-height: 100px;
-  }
   
-  .sidePanel {
+  .sidePanel#large {
     background: $secondary-color;
     width: 30%;
+    min-width: 125px;
     padding: 20px;
     display: flex;
     flex-direction: column;
   }
 
+  .sidePanel#small {
+    width: 100%;
+    min-width: 125px;
+    padding: 20px;
+  }
+
   .sidePanelTitle {
     text-align: center;
     padding: 5px;
+  }
+
+  .projectTitleContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .newProjectDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
   }
 
   .projectTitle {
@@ -90,6 +113,15 @@ body, html {
     width: 100%;
     padding: 50px;
     display: inline-grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(200px, 200px);
+  }
+
+  .todo {
+    // width: 200px;
+    //height: 200px;
+    background-color: $quaternary-color;
+    border: 1px solid black;
   }
 
   .footer {

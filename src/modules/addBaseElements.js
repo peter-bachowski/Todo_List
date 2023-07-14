@@ -9,6 +9,7 @@ function addBaseElements () { //creates the base elements of the web page for st
     container.classList.add('container');
     header.classList.add('header');
     mainBody.classList.add('mainBody');
+    mainBody.id = 'large';
     sidePanel.classList.add('sidePanel');
     contentArea.classList.add('contentArea');
     footer.classList.add('footer');

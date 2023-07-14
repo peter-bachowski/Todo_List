@@ -41,12 +41,12 @@ function projectForm (projectCounter) {
         if (titleInput.value !== '') {
             const newProjectDiv = document.createElement('div');  
             newProjectDiv.addEventListener('click', () => {
-                document.querySelector('#selected').id = null;
+                document.querySelector('#selected').removeAttribute('id');
                 newProjectDiv.id = 'selected';
             });
             newProjectDiv.classList.add('projectTitle');
             newProjectDiv.innerText = titleInput.value;
-            document.querySelector('.sidePanel').appendChild(newProjectDiv);
+            document.querySelector('.projectTitleContainer').appendChild(newProjectDiv);
             container.removeChild(lightbox);
             console.log(projectCounter);
         }
