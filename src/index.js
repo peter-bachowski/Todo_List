@@ -6,13 +6,17 @@ import fillFooter from './modules/fillFooter';
 import fillSidePanel from './modules/fillSidePanel';
 import projectCounter from './modules/projectCounter';
 import resizeWindow from './modules/resizeWindow';
-import loadProjectTodo from './modules/loadProjectTodo';
+import loadTodos from './modules/loadTodos';
 
 addBaseElements();
 fillHeader();
 fillFooter();
 fillSidePanel();
 projectCounter();
-loadProjectTodo();
+loadTodos();
+
+//global variables
+
+let projectArray = [];
 
 window.addEventListener('resize', resizeWindow);
