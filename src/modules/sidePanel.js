@@ -1,4 +1,4 @@
-function fillSidePanel () { //populates the side panel withe the title and a default project name
+function sidePanel () { //populates the side panel withe the title and a default project name
     const sidePanel = document.querySelector('.sidePanel');
     const sidePanelTitle = document.createElement('div');
     const projectTitleContainer = document.createElement('div');
@@ -30,10 +30,19 @@ function fillSidePanel () { //populates the side panel withe the title and a def
         newProjectDiv.appendChild(newProjectBtn);
     projectTitleContainer.appendChild(defaultProject);
 
+
+    //functions
+
+
+    
+
+
+    //listeners
+
     defaultProject.addEventListener('click', () => {
         document.querySelector('#selected').removeAttribute('id');
         defaultProject.id = 'selected';
     });
 }
 
-export default fillSidePanel; 
+export default sidePanel; 

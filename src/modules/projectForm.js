@@ -1,4 +1,6 @@
-function projectForm (projectCounter) {
+import projectData from "./projectData";
+
+function projectForm () {
     // the lightbox
     const lightbox = document.createElement('lightbox');
     const container = document.querySelector('.container');
@@ -32,23 +34,31 @@ function projectForm (projectCounter) {
     form.appendChild(titleInput);
     form.appendChild(submitBtn);
 
-    //listeners
-    close.addEventListener('click', () => {
+    //functions
+
+    function closeLightbox () {
         container.removeChild(lightbox);
-    });
+    }
+
+    function addProjectTab () {
+        const newProjectDiv = document.createElement('div');  
+        newProjectDiv.addEventListener('click', () => {
+            document.querySelector('#selected').removeAttribute('id');
+            newProjectDiv.id = 'selected';
+        });
+        newProjectDiv.classList.add('projectTitle');
+        newProjectDiv.innerText = titleInput.value;
+        document.querySelector('.projectTitleContainer').appendChild(newProjectDiv);
+        container.removeChild(lightbox);
+    }
+
+    //listeners
+
+    close.addEventListener('click', closeLightbox);
 
     submitBtn.addEventListener('click', () => {
         if (titleInput.value !== '') {
-            const newProjectDiv = document.createElement('div');  
-            newProjectDiv.addEventListener('click', () => {
-                document.querySelector('#selected').removeAttribute('id');
-                newProjectDiv.id = 'selected';
-            });
-            newProjectDiv.classList.add('projectTitle');
-            newProjectDiv.innerText = titleInput.value;
-            document.querySelector('.projectTitleContainer').appendChild(newProjectDiv);
-            container.removeChild(lightbox);
-            console.log(projectCounter);
+           addProjectTab();
         }
     });
 }
