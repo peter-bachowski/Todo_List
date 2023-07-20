@@ -1,64 +1,33 @@
-import projectCounter from "./projectData";
+import defaultTodoTemplate from "./defaultTodoTemplate";
+import formatContentArea from "./formatContentArea";
 
-function loadTodos (project) {
+function loadTodos () {
 
-    const contentArea = document.querySelector('.contentArea');
-    const todoContent = document.createElement('div');
-    const addBtnContainer = document.createElement('div');
-    const addTodo = document.createElement('button');
+    const defaultTodo = defaultTodoTemplate();
+    let defaultTodoList = [];
+    let todoCounter = 1;
 
-    addBtnContainer.classList.add('addBtnContainer');
-    todoContent.classList.add('todoContent');
-    addTodo.classList.add('addTodo');
+    defaultTodo.id = 'todo' + todoCounter;
+    defaultTodoList.push(defaultTodo);
 
-    contentArea.appendChild(addBtnContainer);
-    addBtnContainer.appendChild(addTodo);
-    addTodo.innerText = '+';
-
-    contentArea.appendChild(todoContent);
-
-    todoContent.appendChild(todoTemplate(project));
-
+    formatContentArea();
+    document.querySelector('.todoContent').appendChild(defaultTodo);
 
     //functions
-
     
-    function createNewTodo (project) {
-        const newTodo = todoTemplate(project);
-        todoContent.appendChild(newTodo);
-    }
-
-    function todoTemplate (project) {     //creates a todo template
-
-        const todo = document.createElement('div');
-        const todoContent = document.createElement('div');
-        const deleteBtn = document.createElement('button');
-        const todoName = document.createElement('input'); 
-        const todoDescription = document.createElement('textArea');
-        const todoDueDate = document.createElement('input');
-
-        todo.classList.add('todo');
-        todoContent.classList.add('todoContent');
-        todoName.classList.add('todoName');
-        deleteBtn.classList.add('deleteBtn');
-
-        todoContent.appendChild(todo);
-        todo.appendChild(todoName);
-        todo.appendChild(todoDescription);
-        todo.appendChild(todoDueDate);
-        todo.appendChild(deleteBtn); 
-        
-        deleteBtn.innerText = 'Delete';  
-        todoName.value = project.todoList[0].name;
-        todoDescription.value = project.todoList[0].description;
-        todoDueDate.value = project.todoList[0].dueDate;
-        
-        return todo;
+    function createNewTodo () {
+        todoCounter += 1;
+        const newTodo = defaultTodoTemplate();
+        newTodo.id = 'todo' + todoCounter;
+        defaultTodoList.push(newTodo);
+        document.querySelector('.todoContent').appendChild(newTodo);
+        console.log(defaultTodoList);
     }
 
     //listeners
 
-    addTodo.addEventListener('click', createNewTodo);
+    document.querySelector('.addTodo').addEventListener('click', createNewTodo);
+
 }
 
 export default loadTodos;

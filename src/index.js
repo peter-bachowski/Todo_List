@@ -6,11 +6,13 @@ import fillFooter from './modules/fillFooter';
 import sidePanel from './modules/sidePanel';
 import projectData from './modules/projectData';
 import resizeWindow from './modules/resizeWindow';
+import loadTodos from './modules/loadTodos';
 
 addBaseElements();
 fillHeader();
 fillFooter();
 sidePanel();
 projectData();
+loadTodos();
 
 window.addEventListener('resize', resizeWindow);

@@ -1,5 +1,4 @@
 import projectForm from "./projectForm";
-import loadTodos from "./loadTodos";
 
 function projectData () {
 
@@ -25,8 +24,6 @@ function projectData () {
 
     //variables
 
-    let projectArray = [];
-    let projectCounter = projectArray.length;
     let defaultTodoList = [];
     let defaultProject = new Project('Default Project', defaultTodoList, defaultTodoList.length, true);
     let defaultTodo = new Todo('1', 'This is the default project template.', 'July 23', 'High');
@@ -37,8 +34,6 @@ function projectData () {
 
     defaultTodoList.push(defaultTodo);
     projectArray.push(defaultProject);
-
-    loadTodos(defaultProject);
 
     //listeners
 
