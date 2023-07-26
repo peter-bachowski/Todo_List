@@ -1,3 +1,5 @@
+import sortTodoArray from "./sortTodoArray";
+
 function defaultTodoTemplate () {
     const todo = document.createElement('div');
     const todoContent = document.createElement('div');
@@ -9,6 +11,8 @@ function defaultTodoTemplate () {
     todo.classList.add('todo');
     todoContent.classList.add('todoContent');
     todoName.classList.add('todoName');
+    todoDescription.classList.add('todoDescription');
+    todoDueDate.classList.add('todoDueDate');
     deleteBtn.classList.add('deleteBtn');
 
     todoContent.appendChild(todo);
@@ -16,16 +20,14 @@ function defaultTodoTemplate () {
     todo.appendChild(todoDescription);
     todo.appendChild(todoDueDate);
     todo.appendChild(deleteBtn); 
-
-    deleteBtn.parentNode.remove();
     
-    deleteBtn.innerText = 'Delete';  
-    todoName.value = 'title';
-    todoDescription.value = 'This is the default project template.';
-    todoDueDate.value = 'July 23';
+    deleteBtn.innerText = 'Delete';
+    todo.id = 'todo1';  
+
+    //functions
 
     function deleteTodo () {
-        deleteBtn.parentNode.remove();
+        sortTodoArray(deleteBtn);
     }
 
     deleteBtn.addEventListener('click', deleteTodo);

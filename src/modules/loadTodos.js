@@ -1,27 +1,29 @@
 import defaultTodoTemplate from "./defaultTodoTemplate";
 import formatContentArea from "./formatContentArea";
+import loadContent from "./loadContent";
 
 function loadTodos () {
 
-    const defaultTodo = defaultTodoTemplate();
-    let defaultTodoList = [];
-    let todoCounter = 1;
-
-    defaultTodo.id = 'todo' + todoCounter;
-    defaultTodoList.push(defaultTodo);
-
     formatContentArea();
-    document.querySelector('.todoContent').appendChild(defaultTodo);
+
+    let todoCounter = 1; //for counting and naming purposes
+
+    loadContent();
 
     //functions
     
     function createNewTodo () {
         todoCounter += 1;
-        const newTodo = defaultTodoTemplate();
-        newTodo.id = 'todo' + todoCounter;
-        defaultTodoList.push(newTodo);
-        document.querySelector('.todoContent').appendChild(newTodo);
-        console.log(defaultTodoList);
+        const newTodo = cloneDefaultTodo();
+        newTodo.element.id = 'todo' + todoCounter;
+        projectArray[0].todoList.push(newTodo);
+        loadContent();
+    }
+
+    function cloneDefaultTodo () {
+        const element = defaultTodoTemplate();
+        const newTodo = new Todo(defaultTodo.name, defaultTodo.description, defaultTodo.dueDate, defaultTodo.priority, element);
+        return newTodo;
     }
 
     //listeners

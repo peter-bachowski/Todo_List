@@ -1,6 +1,5 @@
 function sidePanel () { //populates the side panel withe the title and a default project name
     
-    window.projectArray = []; //makes a global variable
     
     const sidePanel = document.querySelector('.sidePanel');
     const sidePanelTitle = document.createElement('div');
