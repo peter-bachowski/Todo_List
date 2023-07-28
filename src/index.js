@@ -7,12 +7,14 @@ import sidePanel from './modules/sidePanel';
 import projectData from './modules/projectData';
 import resizeWindow from './modules/resizeWindow';
 import loadTodos from './modules/loadTodos';
+import formatContentArea from './modules/formatContentArea';
 
 addBaseElements();
 fillHeader();
 fillFooter();
-sidePanel();
 projectData();
+sidePanel();
+formatContentArea();
 loadTodos();
 
 window.addEventListener('resize', resizeWindow);

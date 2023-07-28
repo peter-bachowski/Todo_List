@@ -1,6 +1,6 @@
-import projectData from "./projectData";
+import loadProjectDivs from "./loadProjectDivs";
 
-function projectForm () {
+function form () {
     // the lightbox
     const lightbox = document.createElement('lightbox');
     const container = document.querySelector('.container');
@@ -29,6 +29,7 @@ function projectForm () {
     submitBtn.innerText = 'Submit';
     submitBtn.type = 'button';
     form.classList.add('form');
+    titleInput.classList.add('titleInput');
     formContainer.appendChild(form);
     form.appendChild(titleLabel);
     form.appendChild(titleInput);
@@ -40,27 +41,20 @@ function projectForm () {
         container.removeChild(lightbox);
     }
 
-    function addProjectTab () {
-        const newProjectDiv = document.createElement('div');  
-        newProjectDiv.addEventListener('click', () => {
-            document.querySelector('#selected').removeAttribute('id');
-            newProjectDiv.id = 'selected';
-        });
-        newProjectDiv.classList.add('projectTitle');
-        newProjectDiv.innerText = titleInput.value;
-        document.querySelector('.projectTitleContainer').appendChild(newProjectDiv);
-        container.removeChild(lightbox);
-    }
-
     //listeners
 
     close.addEventListener('click', closeLightbox);
 
     submitBtn.addEventListener('click', () => {
         if (titleInput.value !== '') {
-           addProjectTab();
+            let newProject = new Project(titleInput.value, defaultTodoList, defaultTodoList.length, true);
+            for (let i = 0; i < projectArray.length; i++) {
+                projectArray[i].selected = false;
+            }
+            projectArray.push(newProject);
+           loadProjectDivs();
         }
     });
 }
 
-export default projectForm;
+export default form;

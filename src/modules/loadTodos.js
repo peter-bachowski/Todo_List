@@ -1,34 +1,37 @@
 import defaultTodoTemplate from "./defaultTodoTemplate";
-import formatContentArea from "./formatContentArea";
 import loadContent from "./loadContent";
+import findSelectedProject from "./findSelectedProject";
 
 function loadTodos () {
 
-    formatContentArea();
-
     let todoCounter = 1; //for counting and naming purposes
 
-    loadContent();
+    loadContent(defaultProject);
 
     //functions
     
-    function createNewTodo () {
+    function createNewTodo (project) {
         todoCounter += 1;
-        const newTodo = cloneDefaultTodo();
-        newTodo.element.id = 'todo' + todoCounter;
-        projectArray[0].todoList.push(newTodo);
-        loadContent();
+        let newTodoName = 'todo' + todoCounter;
+        const newTodoDiv = cloneDefaultTodo(newTodoName);
+        let newTodoObject = new Todo(newTodoName, defaultTodoList.description, defaultTodoList.dueDate, defaultTodoList.priority, defaultTodoTemplate());
+        newTodoDiv.element.id = newTodoName;
+        project.todoList.push(newTodoDiv);
+        project.todoList.push(newTodoObject);
+        loadContent(project);
     }
 
-    function cloneDefaultTodo () {
+    function cloneDefaultTodo (newTodoName) {
         const element = defaultTodoTemplate();
-        const newTodo = new Todo(defaultTodo.name, defaultTodo.description, defaultTodo.dueDate, defaultTodo.priority, element);
+        const newTodo = new Todo(newTodoName, defaultTodo.description, defaultTodo.dueDate, defaultTodo.priority, element);
         return newTodo;
     }
 
     //listeners
 
-    document.querySelector('.addTodo').addEventListener('click', createNewTodo);
+    document.querySelector('.addTodo').addEventListener('click', () => {
+        createNewTodo(findSelectedProject());
+    });
 
 }
 

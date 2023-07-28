@@ -1,5 +1,4 @@
-function loadContent () { //loads all the todos that are part of the selected project
-    const project = projectArray[0];
+function loadContent (project) { //loads all the todos that are part of the selected project
     const todoList = project.todoList;
     const todoContent = document.querySelectorAll('.todo');
 
@@ -27,7 +26,6 @@ function loadContent () { //loads all the todos that are part of the selected pr
             todoContent[i].remove();
         }
     }
-
 }
 
 export default loadContent;

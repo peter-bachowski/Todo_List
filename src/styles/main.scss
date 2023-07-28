@@ -8,6 +8,8 @@ $secondary-color: rgb(246, 246, 246);
 $tertiary-color: rgb(36, 34, 31);
 $quaternary-color: rgb(198, 198, 198);
 
+$sidePanelPadding: 20px;
+
 body, html {
     margin: 0;
     padding: 0;
@@ -49,10 +51,6 @@ body, html {
     flex: 1;
   }
 
-  // .mainBody#large{
-
-  // }
-
   .mainBody#small{
     flex-direction: column;
   }
@@ -67,9 +65,16 @@ body, html {
     height: 30px;
   }
 
+  .deleteAllProjectsBtn {
+    background-color: $primary-color;
+    color: white;
+    margin-top: 50px;
+    padding: 5px;
+  }
+
   .sidePanel {
     min-width: 125px;
-    padding: 20px;
+    padding: $sidePanelPadding;
     flex-shrink: 0;
   }
   
@@ -112,7 +117,6 @@ body, html {
 
   #selected {
     background-color: rgb(39, 215, 39);
-
   }
 
   .contentArea {

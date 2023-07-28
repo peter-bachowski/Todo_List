@@ -1,5 +1,5 @@
 import defaultTodoTemplate from "./defaultTodoTemplate";
-import projectForm from "./projectForm";
+import form from "./form";
 
 function projectData () {
 
@@ -24,32 +24,19 @@ function projectData () {
         }
     }
 
-    //local variables
-
-    let defaultTodoList = [];
-    const newProjectBtn = document.querySelector('.newProjectBtn');
-
     //global variables
 
     window.projectArray = []; //makes the projectArray global
     window.Project = Project; //global class
     window.Todo = Todo; //global class
-    window.defaultTodo = new Todo('1', 'This is the default project template.', 'July 23', 'High', defaultTodoTemplate()); //global default todo object
+    window.defaultTodoList = [];
+    window.defaultTodo = new Todo('todo1', 'This is the default project template.', 'July 23', 'High', defaultTodoTemplate()); //global default todo object
     window.defaultProject = new Project('Default Project', defaultTodoList, defaultTodoList.length, true);
 
     //actions
 
     defaultTodoList.push(defaultTodo);
     projectArray.push(defaultProject);
-
-    //listeners
-
-    newProjectBtn.addEventListener('click', () => {
-        projectForm();
-    });
-
-    //functions
-
 }
 
 export default projectData;
