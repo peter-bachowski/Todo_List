@@ -1,3 +1,4 @@
+import loadContent from "./loadContent";
 import loadProjectDivs from "./loadProjectDivs";
 
 function form () {
@@ -47,12 +48,14 @@ function form () {
 
     submitBtn.addEventListener('click', () => {
         if (titleInput.value !== '') {
-            let newProject = new Project(titleInput.value, defaultTodoList, defaultTodoList.length, true);
+            let newTodoList = [];
+            let newProject = new Project(titleInput.value, newTodoList, newTodoList.length, true);
             for (let i = 0; i < projectArray.length; i++) {
                 projectArray[i].selected = false;
             }
             projectArray.push(newProject);
            loadProjectDivs();
+           loadContent(newProject);
         }
     });
 }

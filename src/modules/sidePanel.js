@@ -1,30 +1,16 @@
 import clearProjects from "./clearProjects";
 import form from "./form";
 import loadContent from "./loadContent";
+import loadProjectDivs from "./loadProjectDivs";
 
 function sidePanel () { //populates the side panel withe the title and a default project name
 
     const projectTitleContainer = document.createElement('div');
 
     formatSidePanel();
-    addDefaultProject();
+    loadProjectDivs();
 
     //functions
-
-    function addDefaultProject () {
-        const projectTitle = document.createElement('div');
-        projectTitle.classList.add('projectTitle');
-        projectTitle.id = 'selected';  
-
-        projectTitle.innerText = projectArray[0].title;
-        projectTitleContainer.appendChild(projectTitle);
-    
-        projectTitle.addEventListener('click', () => { //when the project title is clicked, changes the id to selected and loads the todos for that project in the content area
-            document.querySelector('#selected').removeAttribute('id');
-            projectTitle.id = 'selected';
-            loadContent();
-        }); 
-    }
 
     function formatSidePanel () {
         const sidePanel = document.querySelector('.sidePanel');
@@ -57,7 +43,15 @@ function sidePanel () { //populates the side panel withe the title and a default
         sidePanel.appendChild(deleteAllProjectsBtn); 
         
         newProjectBtn.addEventListener('click', form); //brings up the form to make new projects
-        deleteAllProjectsBtn.addEventListener('click', clearProjects);
+        
+        deleteAllProjectsBtn.addEventListener('click', () => {
+            let content = document.querySelector('.todoContent');
+            clearProjects(); //clears the html elements from the content area
+            while (content.hasChildNodes() === true) { //while the content area has elements, delete the first element
+                 content.firstChild.remove();
+            }
+            projectArray = []; //clears the project array list
+        });
     }
 }
 

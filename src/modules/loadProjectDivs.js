@@ -1,5 +1,6 @@
 import clearProjects from "./clearProjects";
 import loadContent from "./loadContent";
+import sortProjectArray from "./sortProjectArray";
 
 function loadProjectDivs () {
 
@@ -13,13 +14,18 @@ function loadProjectDivs () {
 
     function loadProject (position) {
         const newProjectDiv = document.createElement('div');  
+        const deleteProjectBtn = document.createElement('div');
 
         newProjectDiv.classList.add('projectTitle');
+        deleteProjectBtn.classList.add('deleteProjectBtn')
         newProjectDiv.innerText = projectArray[position].title;
         document.querySelector('.projectTitleContainer').appendChild(newProjectDiv);
+        newProjectDiv.appendChild(deleteProjectBtn);
         if (document.querySelector('.lightbox') != null) {
             document.querySelector('.container').removeChild(document.querySelector('.lightbox'));   
         }
+
+        //listeners
         
         newProjectDiv.addEventListener('click', () => {
             let selectedProject;
@@ -35,6 +41,11 @@ function loadProjectDivs () {
                 }
             }
             loadContent(selectedProject);
+        });
+
+        deleteProjectBtn.addEventListener('click', (event) => {
+            sortProjectArray(deleteProjectBtn);
+            event.stopPropagation();
         });
     }
 }

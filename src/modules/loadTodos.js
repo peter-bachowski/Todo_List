@@ -11,26 +11,30 @@ function loadTodos () {
     //functions
     
     function createNewTodo (project) {
+
         todoCounter += 1;
         let newTodoName = 'todo' + todoCounter;
-        const newTodoDiv = cloneDefaultTodo(newTodoName);
-        let newTodoObject = new Todo(newTodoName, defaultTodoList.description, defaultTodoList.dueDate, defaultTodoList.priority, defaultTodoTemplate());
-        newTodoDiv.element.id = newTodoName;
-        project.todoList.push(newTodoDiv);
-        project.todoList.push(newTodoObject);
+        const newTodo = defaultTodo();
+        newTodo.element.id = newTodoName;
+        project.todoList.push(newTodo);
         loadContent(project);
     }
 
-    function cloneDefaultTodo (newTodoName) {
+    function defaultTodo () {
         const element = defaultTodoTemplate();
-        const newTodo = new Todo(newTodoName, defaultTodo.description, defaultTodo.dueDate, defaultTodo.priority, element);
+        const newTodo = new Todo('', '', 'July 23', 'High', element);
         return newTodo;
     }
 
     //listeners
 
     document.querySelector('.addTodo').addEventListener('click', () => {
-        createNewTodo(findSelectedProject());
+        try {
+            createNewTodo(findSelectedProject());
+        }
+        catch {
+            console.log('Cannot add to empty project')
+        }
     });
 
 }

@@ -1,7 +1,8 @@
 import loadContent from "./loadContent";
+import findSelectedProject from "./findSelectedProject";
 
 function sortTodoArray (deleteBtn) {
-    const project = projectArray[0];
+    const project = findSelectedProject();
     const todoList = project.todoList;
 
     for (let i = 0; i < todoList.length; i++) {
@@ -10,7 +11,7 @@ function sortTodoArray (deleteBtn) {
             break;
         }
     }
-    loadContent(); //reloads the todos after the array has been sorted
+    loadContent(project); //reloads the todos after the array has been sorted
 }
 
 export default sortTodoArray;

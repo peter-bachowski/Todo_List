@@ -30,7 +30,7 @@ function projectData () {
     window.Project = Project; //global class
     window.Todo = Todo; //global class
     window.defaultTodoList = [];
-    window.defaultTodo = new Todo('todo1', 'This is the default project template.', 'July 23', 'High', defaultTodoTemplate()); //global default todo object
+    window.defaultTodo = new Todo('', '', 'July 23', 'High', defaultTodoTemplate()); //global default todo object
     window.defaultProject = new Project('Default Project', defaultTodoList, defaultTodoList.length, true);
 
     //actions
