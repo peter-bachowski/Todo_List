@@ -37,6 +37,7 @@ function loadContent (project) { //loads all the todos that are part of the sele
         todoDueDateInput.addEventListener('input', () => {
             todo.dueDate = todoDueDateInput.value;
         });
+
     }
 
     function clearContent () {

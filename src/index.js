@@ -8,6 +8,7 @@ import projectData from './modules/projectData';
 import resizeWindow from './modules/resizeWindow';
 import loadTodos from './modules/loadTodos';
 import formatContentArea from './modules/formatContentArea';
+import getCurrentDate from './modules/getCurrentDate';
 
 addBaseElements();
 fillHeader();
@@ -16,5 +17,6 @@ projectData();
 sidePanel();
 formatContentArea();
 loadTodos();
+console.log(getCurrentDate());
 
 window.addEventListener('resize', resizeWindow);

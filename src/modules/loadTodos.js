@@ -1,6 +1,7 @@
 import defaultTodoTemplate from "./defaultTodoTemplate";
 import loadContent from "./loadContent";
 import findSelectedProject from "./findSelectedProject";
+import sortTodosByPriority from "./sortTodosByPriority";
 
 function loadTodos () {
 
@@ -14,15 +15,15 @@ function loadTodos () {
 
         todoCounter += 1;
         let newTodoName = 'todo' + todoCounter;
-        const newTodo = defaultTodo();
+        const newTodo = defaultTodo(newTodoName);
         newTodo.element.id = newTodoName;
         project.todoList.push(newTodo);
         loadContent(project);
     }
 
-    function defaultTodo () {
-        const element = defaultTodoTemplate();
-        const newTodo = new Todo('', '', 'July 23', 'High', element);
+    function defaultTodo (newTodoName) {
+        const element = defaultTodoTemplate(newTodoName);
+        const newTodo = new Todo('', '', null, null, element);
         return newTodo;
     }
 
@@ -36,6 +37,8 @@ function loadTodos () {
             console.log('Cannot add to empty project')
         }
     });
+
+    document.querySelector('.sortByPriorityBtn').addEventListener('click', sortTodosByPriority);
 
 }
 

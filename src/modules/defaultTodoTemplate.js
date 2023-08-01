@@ -1,7 +1,9 @@
-import sortTodoArray from "./sortTodoArray";
+import findSelectedProject from "./findSelectedProject";
+import sortTodosByDelete from "./sortTodosByDelete";
+import sortTodosByPriority from "./sortTodosByPriority";
 
-function defaultTodoTemplate () {
-    const todo = document.createElement('div');
+function defaultTodoTemplate (newTodoName) {
+    const todoElement = document.createElement('div');
     const todoContent = document.createElement('div');
     const deleteBtn = document.createElement('div');
     const nameLabel = document.createElement('label');
@@ -18,8 +20,9 @@ function defaultTodoTemplate () {
     const mediumLabel = document.createElement('label');
     const highPriority = document.createElement('input');
     const highLabel = document.createElement('label');
+    const priorityIcon = document.createElement('div');
 
-    todo.classList.add('todo');
+    todoElement.classList.add('todo');
     todoContent.classList.add('todoContent');
     todoName.classList.add('todoName');
     todoDescription.classList.add('todoDescription');
@@ -29,58 +32,86 @@ function defaultTodoTemplate () {
     lowPriority.classList.add('priority');
     mediumPriority.classList.add('priority');
     highPriority.classList.add('priority');
+    priorityIcon.classList.add('priorityIcon');
 
+    todoElement.id = 'todo1';  
     nameLabel.innerText = 'Name: ';
     descriptionLabel.innerText = 'Description: ';
     dueDateLabel.innerText = 'Due Date: ';
     todoDueDate.type = 'datetime-local';
     priorityLabel.innerText = 'Priority: ';
     lowPriority.type = 'radio';
-    lowPriority.name = 'priority';
-    lowPriority.id = 'low';
+    lowPriority.name = newTodoName;
+    lowPriority.value = 'Low';
     lowLabel.for = 'low';
     lowLabel.innerText = 'Low';
     mediumPriority.type = 'radio';
-    mediumPriority.name = 'priority';
-    mediumPriority.id = 'medium';
+    mediumPriority.name = newTodoName;
+    mediumPriority.value = 'Medium';
     mediumLabel.for = 'medium';
     mediumLabel.innerText = 'Medium';
     highPriority.type = 'radio';
-    highPriority.name = 'priority';
-    highPriority.id = 'high';
+    highPriority.name = newTodoName;
+    highPriority.value = 'High';
     highLabel.for = 'high';
     highLabel.innerText = 'High';
 
-    todoContent.appendChild(todo);
-    todo.appendChild(nameLabel);
-    todo.appendChild(todoName);
-    todo.appendChild(descriptionLabel);
-    todo.appendChild(todoDescription);
-    todo.appendChild(dueDateLabel);
-    todo.appendChild(todoDueDate);
-    todo.appendChild(priorityLabel);
-    todo.appendChild(deleteBtn); 
+    todoContent.appendChild(todoElement);
+    todoElement.appendChild(priorityIcon);
+    todoElement.appendChild(nameLabel);
+    todoElement.appendChild(todoName);
+    todoElement.appendChild(descriptionLabel);
+    todoElement.appendChild(todoDescription);
+    todoElement.appendChild(dueDateLabel);
+    todoElement.appendChild(todoDueDate);
+    todoElement.appendChild(priorityLabel);
+    todoElement.appendChild(deleteBtn); 
     radioContainer.appendChild(lowPriority);
     radioContainer.appendChild(lowLabel);
     radioContainer.appendChild(mediumPriority);
     radioContainer.appendChild(mediumLabel);
     radioContainer.appendChild(highPriority);
     radioContainer.appendChild(highLabel);
-    todo.appendChild(radioContainer);
+    todoElement.appendChild(radioContainer);
     
-    todo.id = 'todo1';  
     
     //functions
 
     function deleteTodo () {
-        sortTodoArray(deleteBtn);
+        sortTodosByDelete(deleteBtn);
+    }
+
+    function findTodoObject (priority) {
+        const element = priority.parentNode.parentNode;
+        const project = findSelectedProject();
+        for(let i = 0; i < project.todoList.length; i++){
+            if (project.todoList[i].element.id === element.id){
+                return project.todoList[i];
+            }   
+        }
+        return null;
     }
 
     //listeners
 
     deleteBtn.addEventListener('click', deleteTodo);
+
+    lowPriority.addEventListener('click', () => {
+        findTodoObject(lowPriority).priority = 'Low';
+        lowPriority.parentNode.parentNode.querySelector('.priorityIcon').style.backgroundColor = 'green';
+    });
+
+    mediumPriority.addEventListener('click', () => {
+        findTodoObject(mediumPriority).priority = 'Medium';
+        mediumPriority.parentNode.parentNode.querySelector('.priorityIcon').style.backgroundColor = 'yellow';
+    });
+
+    highPriority.addEventListener('click', () => {
+        findTodoObject(lowPriority).priority = 'High';
+        highPriority.parentNode.parentNode.querySelector('.priorityIcon').style.backgroundColor = 'red';
+    });
     
-    return todo;
+    return todoElement;
 }
 
 export default defaultTodoTemplate;

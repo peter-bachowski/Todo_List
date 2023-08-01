@@ -1,7 +1,7 @@
 import loadContent from "./loadContent";
 import findSelectedProject from "./findSelectedProject";
 
-function sortTodoArray (deleteBtn) {
+function sortTodosByDelete (deleteBtn) {
     const project = findSelectedProject();
     const todoList = project.todoList;
 
@@ -14,4 +14,4 @@ function sortTodoArray (deleteBtn) {
     loadContent(project); //reloads the todos after the array has been sorted
 }
 
-export default sortTodoArray;
+export default sortTodosByDelete;
