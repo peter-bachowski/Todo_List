@@ -21,6 +21,7 @@ function defaultTodoTemplate (newTodoName) {
     const highPriority = document.createElement('input');
     const highLabel = document.createElement('label');
     const priorityIcon = document.createElement('div');
+    const expandBtn = document.createElement('button');
 
     todoElement.classList.add('todo');
     todoContent.classList.add('todoContent');
