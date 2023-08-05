@@ -21,7 +21,7 @@ function defaultTodoTemplate (newTodoName) {
     const highPriority = document.createElement('input');
     const highLabel = document.createElement('label');
     const priorityIcon = document.createElement('div');
-    const expandBtn = document.createElement('button');
+    const expandBtn = document.createElement('div');
 
     todoElement.classList.add('todo');
     todoContent.classList.add('todoContent');
@@ -34,6 +34,7 @@ function defaultTodoTemplate (newTodoName) {
     mediumPriority.classList.add('priority');
     highPriority.classList.add('priority');
     priorityIcon.classList.add('priorityIcon');
+    expandBtn.classList.add('expandBtn');
 
     todoElement.id = 'todo1';  
     nameLabel.innerText = 'Name: ';
@@ -61,22 +62,42 @@ function defaultTodoTemplate (newTodoName) {
     todoElement.appendChild(priorityIcon);
     todoElement.appendChild(nameLabel);
     todoElement.appendChild(todoName);
-    todoElement.appendChild(descriptionLabel);
-    todoElement.appendChild(todoDescription);
     todoElement.appendChild(dueDateLabel);
     todoElement.appendChild(todoDueDate);
-    todoElement.appendChild(priorityLabel);
-    todoElement.appendChild(deleteBtn); 
-    radioContainer.appendChild(lowPriority);
-    radioContainer.appendChild(lowLabel);
-    radioContainer.appendChild(mediumPriority);
-    radioContainer.appendChild(mediumLabel);
-    radioContainer.appendChild(highPriority);
-    radioContainer.appendChild(highLabel);
-    todoElement.appendChild(radioContainer);
-    
+    todoElement.appendChild(expandBtn);
+
+    addDetails();
+    removeDetails();
     
     //functions
+
+    function addDetails () {
+        todoElement.appendChild(descriptionLabel);
+        todoElement.appendChild(todoDescription);
+        todoElement.appendChild(priorityLabel);
+        radioContainer.appendChild(lowPriority);
+        radioContainer.appendChild(lowLabel);
+        radioContainer.appendChild(mediumPriority);
+        radioContainer.appendChild(mediumLabel);
+        radioContainer.appendChild(highPriority);
+        radioContainer.appendChild(highLabel);
+        todoElement.appendChild(radioContainer);
+        todoElement.appendChild(deleteBtn); 
+    }
+
+    function removeDetails () {
+        todoElement.removeChild(descriptionLabel);
+        todoElement.removeChild(todoDescription);
+        todoElement.removeChild(priorityLabel);
+        radioContainer.removeChild(lowPriority);
+        radioContainer.removeChild(lowLabel);
+        radioContainer.removeChild(mediumPriority);
+        radioContainer.removeChild(mediumLabel);
+        radioContainer.removeChild(highPriority);
+        radioContainer.removeChild(highLabel);
+        todoElement.removeChild(radioContainer);
+        todoElement.removeChild(deleteBtn);
+    }
 
     function deleteTodo () {
         sortTodosByDelete(deleteBtn);

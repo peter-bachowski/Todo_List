@@ -179,8 +179,8 @@ body, html {
   }
 
   .todo {
-    width: 350px;
-    height: 450px;
+    // width: 350px;
+    // height: 450px;
     display: flex;
     flex-direction: column;
     grid-template-columns: 1fr;
@@ -228,11 +228,21 @@ body, html {
     background-size: contain;
     width: 30px;
     height: 30px;
-    position: absolute;
-    bottom: 0;
+    // position: absolute;
+    // bottom: 0;
     color: white;
     border-radius: 7px;
     cursor: pointer;
+    margin-top: 15px;
+  }
+
+  .expandBtn {
+    cursor: pointer;
+    background-image: url('./images/chevronDown.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
   }
 
   button {
