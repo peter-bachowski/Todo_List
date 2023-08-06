@@ -1,6 +1,6 @@
 import findSelectedProject from "./findSelectedProject";
+import populateTodoElement from "./populateTodoElement";
 import sortTodosByDelete from "./sortTodosByDelete";
-import sortTodosByPriority from "./sortTodosByPriority";
 
 function defaultTodoTemplate (newTodoName) {
     const todoElement = document.createElement('div');
@@ -131,6 +131,11 @@ function defaultTodoTemplate (newTodoName) {
     highPriority.addEventListener('click', () => {
         findTodoObject(lowPriority).priority = 'High';
         highPriority.parentNode.parentNode.querySelector('.priorityIcon').style.backgroundColor = 'red';
+    });
+
+    expandBtn.addEventListener('click', () => {
+        addDetails();
+        populateTodoElement(findSelectedTodo(findSelectedProject(), todoElement), todoElement);
     });
     
     return todoElement;
