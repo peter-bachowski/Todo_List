@@ -1,4 +1,5 @@
 import findSelectedProject from "./findSelectedProject";
+import findSelectedTodo from "./findSelectedTodo";
 import populateTodoElement from "./populateTodoElement";
 import sortTodosByDelete from "./sortTodosByDelete";
 
@@ -22,8 +23,10 @@ function defaultTodoTemplate (newTodoName) {
     const highLabel = document.createElement('label');
     const priorityIcon = document.createElement('div');
     const expandBtn = document.createElement('div');
+    const retractBtn = document.createElement('div');
 
     todoElement.classList.add('todo');
+    todoElement.classList.add('retracted');
     todoContent.classList.add('todoContent');
     todoName.classList.add('todoName');
     todoDescription.classList.add('todoDescription');
@@ -35,12 +38,13 @@ function defaultTodoTemplate (newTodoName) {
     highPriority.classList.add('priority');
     priorityIcon.classList.add('priorityIcon');
     expandBtn.classList.add('expandBtn');
+    retractBtn.classList.add('retractBtn');
 
     todoElement.id = 'todo1';  
     nameLabel.innerText = 'Name: ';
     descriptionLabel.innerText = 'Description: ';
     dueDateLabel.innerText = 'Due Date: ';
-    todoDueDate.type = 'datetime-local';
+    todoDueDate.type = 'date';
     priorityLabel.innerText = 'Priority: ';
     lowPriority.type = 'radio';
     lowPriority.name = newTodoName;
@@ -65,13 +69,12 @@ function defaultTodoTemplate (newTodoName) {
     todoElement.appendChild(dueDateLabel);
     todoElement.appendChild(todoDueDate);
     todoElement.appendChild(expandBtn);
-
-    addDetails();
-    removeDetails();
     
     //functions
 
     function addDetails () {
+        todoElement.classList.remove('retracted');
+        todoElement.classList.add('expanded');
         todoElement.appendChild(descriptionLabel);
         todoElement.appendChild(todoDescription);
         todoElement.appendChild(priorityLabel);
@@ -83,9 +86,12 @@ function defaultTodoTemplate (newTodoName) {
         radioContainer.appendChild(highLabel);
         todoElement.appendChild(radioContainer);
         todoElement.appendChild(deleteBtn); 
+        todoElement.appendChild(retractBtn);
     }
 
     function removeDetails () {
+        todoElement.classList.remove('expanded');
+        todoElement.classList.add('retracted');
         todoElement.removeChild(descriptionLabel);
         todoElement.removeChild(todoDescription);
         todoElement.removeChild(priorityLabel);
@@ -97,6 +103,7 @@ function defaultTodoTemplate (newTodoName) {
         radioContainer.removeChild(highLabel);
         todoElement.removeChild(radioContainer);
         todoElement.removeChild(deleteBtn);
+        todoElement.appendChild(expandBtn);
     }
 
     function deleteTodo () {
@@ -134,8 +141,28 @@ function defaultTodoTemplate (newTodoName) {
     });
 
     expandBtn.addEventListener('click', () => {
+        const project = findSelectedProject();
+        todoElement.removeChild(expandBtn);
         addDetails();
-        populateTodoElement(findSelectedTodo(findSelectedProject(), todoElement), todoElement);
+        populateTodoElement(findSelectedTodo(project, todoElement), todoElement);
+    });
+
+    retractBtn.addEventListener('click', () => {
+        todoElement.removeChild(retractBtn);
+        removeDetails();
+    });
+
+    todoName.addEventListener('input', () => {
+        findSelectedTodo(findSelectedProject(), todoElement).name = todoName.value;
+        todoElement.id = todoName.value
+    });
+
+    todoDescription.addEventListener('input', () => {
+        findSelectedTodo(findSelectedProject(), todoElement).description = todoDescription.value;
+    });
+
+    todoDueDate.addEventListener('input', () => {
+        findSelectedTodo(findSelectedProject(), todoElement).dueDate = todoDueDate.value;
     });
     
     return todoElement;

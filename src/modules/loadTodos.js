@@ -2,6 +2,7 @@ import defaultTodoTemplate from "./defaultTodoTemplate";
 import loadContent from "./loadContent";
 import findSelectedProject from "./findSelectedProject";
 import sortTodosByPriority from "./sortTodosByPriority";
+import sortByDueDate from "./sortTodosByDueDate";
 
 function loadTodos () {
 
@@ -34,12 +35,9 @@ function loadTodos () {
             createNewTodo(findSelectedProject());
         }
         catch {
-            console.log('Cannot add to empty project')
+            console.log('No projects to add to.')
         }
     });
-
-    document.querySelector('.sortByPriorityBtn').addEventListener('click', sortTodosByPriority);
-
 }
 
 export default loadTodos;

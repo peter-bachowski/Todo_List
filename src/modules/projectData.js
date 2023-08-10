@@ -1,5 +1,4 @@
 import defaultTodoTemplate from "./defaultTodoTemplate";
-import form from "./form";
 
 function projectData () {
 
@@ -30,7 +29,7 @@ function projectData () {
     window.Project = Project; //global class
     window.Todo = Todo; //global class
     window.defaultTodoList = [];
-    window.defaultTodo = new Todo('', '', '', '', defaultTodoTemplate()); //global default todo object
+    window.defaultTodo = new Todo('', '', null, null, defaultTodoTemplate()); //global default todo object
     window.defaultProject = new Project('Default Project', defaultTodoList, defaultTodoList.length, true);
 
     //actions

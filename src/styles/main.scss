@@ -131,7 +131,7 @@ body, html {
     border-radius: 5px;
   }
 
-  #selected {
+  #selectedProject{
     background-color: $quaternary-color;
     border-radius: 5px;
   }
@@ -146,6 +146,8 @@ body, html {
 
   .todoContent {
     margin-top: 20px;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
     display: flex;
     flex-wrap: wrap;
     grid-gap: 50px;
@@ -161,6 +163,7 @@ body, html {
     width: 100%;
     display: flex;
     justify-content: center;
+    gap: 20px;
   }
 
   .priorityIcon {
@@ -173,14 +176,14 @@ body, html {
   }
 
   .addTodo {
-    width: 50px;
+    width: 100px;
     height: 50px;
     border-radius: 5px;
   }
 
   .todo {
-    // width: 350px;
-    // height: 450px;
+    height: 200px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     grid-template-columns: 1fr;
@@ -193,6 +196,15 @@ body, html {
     padding: 15px;
     gap: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    min-height: 0;
+  }
+
+  .todo.expanded {
+    height: 500px;
+  }
+
+  .todo.retracted {
+    height: 200px;
   }
 
   .todo label {
@@ -203,6 +215,12 @@ body, html {
     width: 100%;
     font-size: 20px;
     text-align: center;
+  }
+
+  .todoDueDate {
+    height: 50px;
+    width: 100%;
+    font-size: 20px;
   }
 
   .radioContainer {
@@ -220,30 +238,37 @@ body, html {
     border: 0px;
     width: 100%;
     height: 20px;
+    cursor: pointer;
   }
 
   .deleteBtn {
     background-image: url('./images/delete.png');
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
     width: 30px;
     height: 30px;
-    // position: absolute;
-    // bottom: 0;
     color: white;
     border-radius: 7px;
     cursor: pointer;
     margin-top: 15px;
   }
 
-  .expandBtn {
+  .expandBtn, .retractBtn {
     cursor: pointer;
-    background-image: url('./images/chevronDown.png');
     background-repeat: no-repeat;
     background-size: contain;
     width: 25px;
     height: 25px;
     margin-top: 20px;
+  }
+
+  .expandBtn {
+    background-image: url('./images/chevronDown.png');
+  }
+
+  .retractBtn {
+    background-image: url('./images/chevronUp.png');
   }
 
   button {

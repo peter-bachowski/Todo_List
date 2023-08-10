@@ -4,7 +4,7 @@ import loadContent from "./loadContent";
 function sortTodosByPriority () {
     const selectedProject = findSelectedProject();
     let sortedTodoList = [];
-    
+
     sort(null);
     sort('High');
     sort('Medium');
@@ -14,6 +14,7 @@ function sortTodosByPriority () {
     loadContent(selectedProject);
 
     function sort (priority) {
+
         for (let i = 0; i < selectedProject.todoList.length; i++){ //sorts todos with no priority first
             let todo = selectedProject.todoList[i];
             if(todo.priority === priority) {

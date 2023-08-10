@@ -10,7 +10,7 @@ function loadProjectDivs () {
         loadProject(position);
     }
 
-    document.querySelector('.projectTitleContainer').lastChild.id = 'selected';
+    document.querySelector('.projectTitleContainer').lastChild.id = 'selectedProject';
 
     function loadProject (position) {
         const newProjectDiv = document.createElement('div');  
@@ -29,8 +29,8 @@ function loadProjectDivs () {
         
         newProjectDiv.addEventListener('click', () => {
             let selectedProject;
-            document.querySelector('#selected').removeAttribute('id');
-            newProjectDiv.id = 'selected';
+            document.querySelector('#selectedProject').removeAttribute('id');
+            newProjectDiv.id = 'selectedProject';
             for (let i = 0; i < projectArray.length; i++) {
                 if (projectArray[i].title === newProjectDiv.innerText){
                     projectArray[i].selected = true;

@@ -17,6 +17,5 @@ projectData();
 sidePanel();
 formatContentArea();
 loadTodos();
-console.log(getCurrentDate());
 
 window.addEventListener('resize', resizeWindow);
